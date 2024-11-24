@@ -4,7 +4,7 @@ from constantes import *
 
 def compartilhado():
     
-    veiculo = Veiculo("Volkswagen Delivery 11.180", 7500, "PMO-7008", 5.4, 10800)
+    veiculo = Veiculo("Volkswagen Delivery 11.180", 7400, "PMO-7008", 5.4, 10800)
 
     frete = Frete("Juazeiro-do-Norte", "Russas", 364.8, veiculo, "CMOtion","Mobilia", gas)
 
@@ -14,9 +14,16 @@ def compartilhado():
     frete.detalhes()
     print(f"Durante essa viagem, foram liberados {frete.pegada_co2(emissao_disel):.2f} kg de CO2 na Atmosfera")
 
-    frete.adicionar_carga("Empresa A", 3000,"Mobilia")
+    frete.adicionar_carga("Empresa A", 3040,"Mobilia")
     print("")
     print("Com 1 Parceria")
+    print(frete)
+    frete.detalhes()
+    print(f"Durante essa viagem, foram liberados {frete.pegada_co2(emissao_disel):.2f} kg de CO2 na Atmosfera")
+
+    frete.adicionar_carga("Empresa B", 4320,"Mobilia")
+    print("")
+    print("Com 2 Parceria")
     print(frete)
     frete.detalhes()
     print(f"Durante essa viagem, foram liberados {frete.pegada_co2(emissao_disel):.2f} kg de CO2 na Atmosfera")

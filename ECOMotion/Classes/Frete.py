@@ -29,8 +29,7 @@ class Frete:
                     self.valores[empresa] = 0
                 self.cargas[empresa] += peso
                 self.consumo = (self.distancia/self.veiculo.rendimento) * (1+((sum(self.cargas.values())/self.veiculo.peso)))
-                preco = self.calcular_valor(peso)
-                self.valores[empresa] += preco
+                self.distribuicao()
             else:
                 print("Erro: Peso excede a capacidade disponível.")
         else:
@@ -41,6 +40,21 @@ class Frete:
         emissao_total = self.consumo * emissao_media
         return emissao_total
         
+    def distribuicao(self):
+        peso = sum(self.cargas.values())  
+        valor = self.consumo * self.gas  
+        resto = (self.veiculo.capacidadeCarga - peso) / self.veiculo.capacidadeCarga   
+        total = sum(self.cargas[empresa] for empresa in self.valores if self.cargas[empresa] > 0)
+        for empresa in self.valores:
+            if self.cargas[empresa] > 0:  
+                parte = self.cargas[empresa] / total  
+                redistribuida = (parte * resto / peso) * valor  
+                proporcao = parte * valor + redistribuida 
+                self.valores[empresa] = proporcao
+            else:
+                self.valores[empresa] = 0 
+
+
     def detalhes(self):
         print (f"A Viagem de {self.origem} ate {self.destino} ({self.distancia} km), sera feita pelo veiculo de placa {self.veiculo.placa} e tera custo total de R${(self.consumo * self.gas):.2f}")
 
