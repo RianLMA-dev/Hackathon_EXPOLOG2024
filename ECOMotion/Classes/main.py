@@ -9,11 +9,6 @@ def compartilhado():
     frete = Frete("Juazeiro-do-Norte", "Russas", 364.8, veiculo, "CMOtion","Mobilia", gas)
 
     print("-------------------------CASO COMPARTILHADO-------------------------")
-    print("Sem parceria")
-    print(frete)
-    frete.detalhes()
-    print(f"Durante essa viagem, foram liberados {frete.pegada_co2(emissao_disel):.2f} kg de CO2 na Atmosfera")
-
     frete.adicionar_carga("Empresa A", 3040,"Mobilia")
     print("")
     print("Com 1 Parceria")
@@ -47,16 +42,16 @@ def individual():
 
     print("-------------------------CASO INDIVIDUAL-------------------------")
     print("Empresa A:")
+    frete1.adicionar_carga("Empresa A", 3040,"Mobilia")
     print(frete1)
     frete1.detalhes()
-    frete1.adicionar_carga("Empresa A", 3040,"Mobilia")
     print(f"Durante essa viagem, foram liberados {frete1.pegada_co2(emissao_disel):.2f} kg de CO2 na Atmosfera")
     print()
 
     print("Empresa B:")
+    frete2.adicionar_carga("Empresa B", 3040,"Mobilia")
     print(frete2)
     frete2.detalhes()
-    frete2.adicionar_carga("Empresa B", 3040,"Mobilia")
     print(f"Durante essa viagem, foram liberados {frete2.pegada_co2(emissao_disel):.2f} kg de CO2 na Atmosfera")
     print()
 
