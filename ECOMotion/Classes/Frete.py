@@ -2,7 +2,7 @@ from tabulate import tabulate
 import uuid
 
 class Frete:
-    def __init__(self, origem, destino, distancia, veiculo, empresa_fornecedora_veiculo, tipo, gas):
+    def __init__(self, origem, destino, distancia, veiculo, empresa_fornecedora_veiculo, tipo, gas, valor):
         self.id = str(uuid.uuid4())
         self.origem = origem
         self.destino = destino
@@ -19,7 +19,7 @@ class Frete:
         return self.veiculo.capacidadeCarga - sum(self.cargas.values())
 
     def calcular_valor(self, peso):
-        return  self.consumo * self.gas * (peso / self.veiculo.capacidadeCarga)
+        return self.consumo * self.gas * (peso / self.veiculo.capacidadeCarga)
 
     def adicionar_carga(self, empresa, peso, tipo):
         if tipo == self.tipo:
